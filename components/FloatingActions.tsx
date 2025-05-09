@@ -7,12 +7,14 @@ import { Button } from "@/components/radix/button"
 import Link from "next/link"
 import { useCart } from "./cart-provider"
 import CartDrawer from "./cart-drawer"
+import { usePathname } from "next/navigation"
 
 export default function FloatingActions() {
   const { cartItems } = useCart()
   const [showCalendar, setShowCalendar] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const pathname = usePathname()
 
   // Calendar button show/hide logic (copied from EventBookingWidget)
   useEffect(() => {
@@ -28,6 +30,7 @@ export default function FloatingActions() {
   // Only show cart if there are items
   const showCart = cartItems.length > 0
   const bothVisible = showCart && showCalendar
+  const isEventsPage = pathname === '/events'
 
   return (
     <>
@@ -68,7 +71,7 @@ export default function FloatingActions() {
           )}
         </AnimatePresence>
         <AnimatePresence>
-          {showCalendar && (
+          {showCalendar && !isEventsPage && (
             <motion.div
               key="calendar"
               layout
