@@ -208,15 +208,23 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                       </div>
                     </div>
 
-                    <Separator className="my-4" />
+                    <Separator className="my-6" />
 
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input id="name" name="name" value={formData.name} onChange={handleInputChange} required />
+                    <div className="px-4 space-y-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="name" className="text-sm font-medium text-gray-700">Name</Label>
+                        <Input 
+                          id="name" 
+                          name="name" 
+                          value={formData.name} 
+                          onChange={handleInputChange} 
+                          required 
+                          className="w-full h-10 rounded-md border-input bg-white text-sm focus:ring-[#b78254] focus-visible:ring-[#b78254]"
+                          placeholder="Enter your full name"
+                        />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
                         <Input
                           id="email"
                           name="email"
@@ -224,10 +232,12 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
+                          className="w-full h-10 rounded-md border-input bg-white text-sm focus:ring-[#b78254] focus-visible:ring-[#b78254]"
+                          placeholder="Enter your email address"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone</Label>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</Label>
                         <Input
                           id="phone"
                           name="phone"
@@ -235,10 +245,12 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                           value={formData.phone}
                           onChange={handleInputChange}
                           required
+                          className="w-full h-10 rounded-md border-input bg-white text-sm focus:ring-[#b78254] focus-visible:ring-[#b78254]"
+                          placeholder="Enter your phone number"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="pickupTime">Pickup Time</Label>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="pickupTime" className="text-sm font-medium text-gray-700">Pickup Time</Label>
                         <Input
                           id="pickupTime"
                           name="pickupTime"
@@ -246,10 +258,11 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                           value={formData.pickupTime}
                           onChange={handleInputChange}
                           required
+                          className="w-full h-10 rounded-md border-input bg-white text-sm focus:ring-[#b78254] focus-visible:ring-[#b78254]"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="pickupLocation" className="text-sm font-medium">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="pickupLocation" className="text-sm font-medium text-gray-700">
                           Pickup Location
                         </Label>
                         <Select
@@ -260,7 +273,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                         >
                           <SelectTrigger
                             id="pickupLocation"
-                            className="w-full border-input focus:ring-[#b78254] focus-visible:ring-[#b78254]"
+                            className="w-full h-10 rounded-md border-input bg-white text-sm focus:ring-[#b78254] focus-visible:ring-[#b78254]"
                           >
                             <SelectValue placeholder="Choose pickup location" />
                           </SelectTrigger>
@@ -269,7 +282,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                               <SelectItem
                                 key={location.id}
                                 value={location.id}
-                                className="font-poppins focus:bg-[#b78254] focus:text-white"
+                                className="font-poppins text-sm focus:bg-[#b78254] focus:text-white"
                               >
                                 <div>
                                   <div className="font-medium">{location.name}</div>
@@ -279,15 +292,17 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                             ))}
                           </SelectContent>
                         </Select>
-                        <p className="text-xs text-muted-foreground">Choose the branch where you'll pick up your drink.</p>
+                        <p className="text-xs text-muted-foreground mt-1.5">Choose the branch where you'll pick up your drink.</p>
                       </div>
                     </div>
                   </div>
 
-                  <SheetFooter className="pt-2 sticky bottom-0 bg-white z-10 border-t border-muted">
-                    <Button type="submit" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? "Processing..." : "Place Order"}
-                    </Button>
+                  <SheetFooter className="pt-4 sticky bottom-0 bg-white z-10 border-t border-muted">
+                    <div className="px-4 w-full">
+                      <Button type="submit" className="w-full" disabled={isSubmitting}>
+                        {isSubmitting ? "Processing..." : "Place Order"}
+                      </Button>
+                    </div>
                   </SheetFooter>
                 </form>
               )}
