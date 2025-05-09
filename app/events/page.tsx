@@ -38,7 +38,7 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="container py-12">
+    <div className="container mx-auto px-4 py-12">
       <div className="mx-auto max-w-2xl">
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-[#b78254] sm:text-4xl">

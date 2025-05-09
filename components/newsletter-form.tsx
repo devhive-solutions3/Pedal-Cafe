@@ -4,8 +4,8 @@ import type React from "react"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { useToast } from "@/components/ui/use-toast"
+import { Input } from "@/components/radix/input"
+import { useToast } from "@/components/radix/use-toast"
 import { subscribeToNewsletter } from "@/lib/actions"
 
 export default function NewsletterForm() {

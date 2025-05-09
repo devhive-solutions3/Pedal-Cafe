@@ -69,14 +69,14 @@ export default function Hero() {
 
       {/* Hero Content */}
       <div className="absolute inset-0 flex items-center justify-center z-20">
-        <div className="container text-center text-white">
+        <div className="max-w-screen-lg mx-auto px-4 w-full text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Handcrafted Coffee,
+              Handcrafted Coffee
               <br />
               Delivered with Love
             </h1>
@@ -88,7 +88,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="mx-auto mt-6 max-w-lg text-xl text-gray-200"
           >
-            Experience our unique mobile coffee service, bringing artisanal brews right to your doorstep
+            Experience our unique mobile coffee service bringing artisanal brews right to your doorstep
           </motion.p>
 
           <motion.div

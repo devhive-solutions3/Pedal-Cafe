@@ -5,16 +5,16 @@ import { FaTiktok } from "react-icons/fa"
 export default function Footer() {
   return (
     <footer className="border-t bg-muted/40">
-      <div className="container py-8 md:py-12">
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-          <div>
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-8 items-start">
+          <div className="text-center md:text-left">
             <h3 className="mb-4 text-lg font-semibold text-primary">Pedal Cafe</h3>
             <p className="text-sm text-muted-foreground">
               Handcrafted coffee and pastries on wheels. Bringing quality to you since 2022.
             </p>
           </div>
 
-          <div>
+          <div className="text-center md:text-left pl-2 md:pl-6">
             <h3 className="mb-4 text-lg font-semibold text-primary">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
@@ -40,7 +40,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="mb-4 text-lg font-semibold text-primary">Contact</h3>
             <ul className="space-y-2 text-sm">
               <li className="text-muted-foreground">1234, Pedal Street, Manila City</li>
@@ -60,9 +60,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="mb-4 text-lg font-semibold text-primary">Follow Us</h3>
-            <div className="flex gap-4">
+            <div className="flex justify-center md:justify-start gap-4">
               <a
                 href="https://www.instagram.com/pedalcafeph?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
@@ -95,11 +95,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t border-muted pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} Pedal Cafe. All rights reserved.
             </p>
-            <div className="flex gap-4 text-sm">
+            <div className="flex gap-4 text-sm w-full md:w-auto md:ml-auto md:text-right justify-center md:justify-end">
               <Link href="" className="text-muted-foreground hover:text-primary transition-colors">
                 Privacy Policy
               </Link>

@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Image from "next/image"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Dialog, DialogContent, DialogTitle } from "@/components/radix/dialog"
+import { Button } from "@/components/radix/button"
+import { Badge } from "@/components/radix/badge"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { motion } from "framer-motion"
 
 // Gallery images with tags
 const galleryImages = [
@@ -77,22 +79,34 @@ export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
-  const filteredImages = selectedTag ? galleryImages.filter((image) => image.tags.includes(selectedTag)) : galleryImages
+  const filteredImages = useMemo(() => 
+    selectedTag ? galleryImages.filter((image) => image.tags.includes(selectedTag)) : galleryImages,
+    [selectedTag]
+  )
 
   return (
     <div className="container py-12">
-      <div className="mb-8 text-center">
+      <div className="mb-8 text-center" data-aos="fade-up">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Gallery</h1>
         <p className="mt-4 text-muted-foreground">Take a visual tour of our cafes, products, and happy moments</p>
       </div>
 
       {/* Filter tags */}
-      <div className="mb-8 flex flex-wrap justify-center gap-2">
+      <motion.div
+        className="mb-8 flex flex-wrap justify-center gap-2"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+      >
         <Button
           variant={selectedTag === null ? "default" : "outline"}
           size="sm"
           onClick={() => setSelectedTag(null)}
-          className="cafe-button"
+          className={`min-w-[100px] rounded-lg transition-all duration-200 ${
+            selectedTag === null 
+              ? "bg-[#b17742] text-white hover:bg-[#b17742]/90" 
+              : "bg-white text-gray-700 hover:bg-[#f3e6d8] border-[#b17742]"
+          }`}
         >
           All
         </Button>
@@ -102,18 +116,26 @@ export default function GalleryPage() {
             variant={selectedTag === tag ? "default" : "outline"}
             size="sm"
             onClick={() => setSelectedTag(tag)}
-            className="cafe-button"
+            className={`min-w-[100px] rounded-lg transition-all duration-200 ${
+              selectedTag === tag 
+                ? "bg-[#b17742] text-white hover:bg-[#b17742]/90" 
+                : "bg-white text-gray-700 hover:bg-[#f3e6d8] border-[#b17742]"
+            }`}
           >
             {tag}
           </Button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Gallery grid */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredImages.map((image, index) => (
-          <div
-            key={index}
+          <motion.div
+            key={image.src}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
             className="group cursor-pointer overflow-hidden rounded-lg shadow-soft hover:shadow-soft-lg transition-all duration-300"
             onClick={() => setSelectedImage(image.src)}
           >
@@ -132,16 +154,25 @@ export default function GalleryPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       {/* Image modal */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-[90vw] max-h-[90vh] p-4 flex items-center justify-center">
+          <VisuallyHidden>
+            <DialogTitle>Image Preview</DialogTitle>
+          </VisuallyHidden>
           {selectedImage && (
-            <div className="relative aspect-[4/3] w-full">
-              <Image src={selectedImage || "/placeholder.svg"} alt="Gallery image" fill className="object-contain" />
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image 
+                src={selectedImage || "/placeholder.svg"} 
+                alt="Gallery image" 
+                fill 
+                className="object-contain rounded-lg"
+                priority
+              />
             </div>
           )}
         </DialogContent>

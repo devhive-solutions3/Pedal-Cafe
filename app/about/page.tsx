@@ -4,16 +4,16 @@ import Link from "next/link"
 
 export default function AboutPage() {
   return (
-    <div className="container py-12">
-      <div className="mb-12 text-center">
+    <div className="container mx-auto px-4 py-12">
+      <div className="mb-12 text-center" data-aos="fade-up">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">About Pedal Cafe</h1>
         <p className="mt-4 text-muted-foreground">Our story, mission, and the people behind the coffee</p>
       </div>
 
       {/* Made in Brussels */}
       <section className="mb-16">
-        <div className="grid gap-8 md:grid-cols-2 md:items-center">
-          <div>
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 md:items-center">
+          <div data-aos="fade-right">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-primary">Made in Philippines</h2>
             <p className="mt-4 text-muted-foreground">
               Pedal Cafe was founded in the Philippines in 2022 by two friends who shared a passion for great coffee and
@@ -21,7 +21,7 @@ export default function AboutPage() {
               known for its unique blend of quality brews, cozy ambiance, and community-driven vibe.
             </p>
           </div>
-          <div className="cafe-image">
+          <div className="cafe-image" data-aos="fade-left">
             <Image
               src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop"
               alt="Warm café interior"
@@ -35,8 +35,8 @@ export default function AboutPage() {
 
       {/* Handmade Just for You */}
       <section className="mb-16">
-        <div className="grid gap-8 md:grid-cols-2 md:items-center">
-          <div className="order-2 md:order-1 cafe-image">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 md:items-center">
+          <div className="order-2 md:order-1 cafe-image" data-aos="fade-right">
             <Image
               src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=1974&auto=format&fit=crop"
               alt="Handmade coffee preparation"
@@ -45,7 +45,7 @@ export default function AboutPage() {
               className="h-full w-full object-cover rounded-lg shadow-soft"
             />
           </div>
-          <div className="order-1 md:order-2">
+          <div className="order-1 md:order-2" data-aos="fade-left">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-primary">Handmade Just for You</h2>
             <p className="mt-4 text-muted-foreground">
               Every cup of coffee we serve is prepared with care by our skilled baristas. We believe that great coffee
@@ -60,7 +60,7 @@ export default function AboutPage() {
       </section>
 
       {/* Customer Testimonials */}
-      <section className="mb-16 rounded-xl bg-[#f4d398]/20 p-8 shadow-soft">
+      <section className="mb-16 rounded-xl bg-[#f4d398]/20 p-8 shadow-soft" data-aos="fade-up">
         <h2 className="mb-8 text-center text-2xl font-bold tracking-tight sm:text-3xl text-[#b78254]">
           What Our Customers Are Saying
         </h2>
@@ -86,6 +86,8 @@ export default function AboutPage() {
             <div
               key={index}
               className="rounded-lg bg-white p-8 shadow-soft transition-all duration-200 hover:shadow-md"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
               <p className="font-poppins text-lg text-muted-foreground">"{testimonial.quote}"</p>
               <p className="mt-4 font-poppins font-medium text-[#b78254]">— {testimonial.author}</p>
@@ -95,7 +97,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="text-center">
+      <section className="text-center" data-aos="fade-up">
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-primary">Ready to Experience Pedal Cafe?</h2>
         <p className="mt-4 text-muted-foreground">Visit one of our locations or order online for pickup</p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">

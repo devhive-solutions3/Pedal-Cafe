@@ -53,41 +53,25 @@ const locations = [
 export default function LocationsPage() {
   return (
     <div className="container py-12">
-      <div className="mb-12 text-center">
+      <div className="mb-12 text-center" data-aos="fade-up">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Our Locations</h1>
         <p className="mt-4 text-muted-foreground">Find a Pedal Cafe near you</p>
       </div>
 
-      {/* Mobile Locations */}
-      <section className="mb-16">
-        <div className="rounded-xl bg-secondary/20 p-8 shadow-soft">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Mobile Locations</h2>
-          <p className="mt-4 text-muted-foreground">
-            In addition to our permanent cafes, you can find our bicycle carts at various locations throughout the city.
-            Follow us on social media for daily updates on where our mobile cafes will be!
-          </p>
-          <div className="mt-6">
-            <Button asChild className="cafe-button">
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                Follow for Updates
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Permanent Locations */}
       <section>
-        <h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">Permanent Cafes</h2>
+        <h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl" data-aos="fade-up">Permanent Cafes</h2>
         <div className="grid gap-12">
-          {locations.map((location) => (
+          {locations.map((location, index) => (
             <div
               key={location.id}
               id={location.id}
               className="scroll-mt-16 rounded-xl border bg-white p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
               <div className="grid gap-8 md:grid-cols-2">
-                <div className="cafe-image overflow-hidden">
+                <div className="cafe-image overflow-hidden" data-aos="zoom-in" data-aos-delay={index * 100 + 100}>
                   <Image
                     src={location.image || "/placeholder.svg"}
                     alt={`${location.city} location`}
@@ -96,7 +80,7 @@ export default function LocationsPage() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div>
+                <div data-aos="fade-left" data-aos-delay={index * 100 + 200}>
                   <h3 className="text-2xl font-bold text-primary">{location.city}</h3>
                   <p className="mt-2 text-muted-foreground">{location.description}</p>
 
